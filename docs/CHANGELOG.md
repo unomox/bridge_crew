@@ -8,5 +8,6 @@
  - Select Python as primary language; add Ruff, Black, Pytest; update Docker, CI, and docs; scaffold src/ and tests/.
  - Week 3: Add Riker orchestrator skeleton, base agent interface, unit tests, and backlog entry BC-1.
  - Add Data specialist agent and integrate delegation path; add tests.
+ - Week 3: BC-2 — Add La Forge agent and enable Docker Buildx layer caching in CI; add backlog entry.
 
 
