@@ -35,6 +35,8 @@ RUN python3 -m pip install --no-cache-dir \
     ruff==0.6.4 \
     black==24.8.0 \
     pytest==8.2.0 \
-    pytest-cov==5.0.0
+    pytest-cov==5.0.0 \
+    bandit==1.7.9 \
+    pip-audit==2.7.3
 
 

@@ -10,6 +10,7 @@
 - Pre-merge: lint (markdownlint, yamllint, hadolint, actionlint), unit+integration, SAST/secret scans.
   - Python: add Ruff and Black checks; run Pytest.
   - Coverage: enforce threshold via pytest-cov; report term-missing.
+  - Security: run Bandit (SAST) and pip-audit (deps) in the security job.
 - Pre-release: e2e, performance baseline, security review.
 - Post-release: canary and monitoring alerts.
 
