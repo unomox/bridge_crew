@@ -1,0 +1,4 @@
+ignored:
+  - DL3008 # Pin versions in apt-get install (handled via base image updates)
+  - DL3007 # Using latest tag discouraged (we pin versions where critical)
+  - DL3018 # Pin versions in apk add (not applicable on Ubuntu)

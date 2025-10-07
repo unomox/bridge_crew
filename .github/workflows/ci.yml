@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t bridge-crew-dev -f docker/Dockerfile .
+      - name: Validate docker-compose
+        run: docker compose -f docker/docker-compose.yml config
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build lint image
+        run: docker build -t bridge-crew-dev -f docker/Dockerfile .
+      - name: Run linters
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace bridge-crew-dev bash -lc "chmod +x scripts/lint.sh && scripts/lint.sh && ruff . && black --check ."
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build test image
+        run: docker build -t bridge-crew-dev -f docker/Dockerfile .
+      - name: Run pytest
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace bridge-crew-dev bash -lc "pytest -q"
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run gitleaks (secrets scan)
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          fail: false
+
