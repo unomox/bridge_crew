@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from typing import Optional, List
 
 from src.core.agents.base import AgentMap, BacklogItem, ExecutionPlan
+from src.core.observability.logging import log_info
 
 
 @dataclass
@@ -19,7 +20,9 @@ class RikerOrchestrator:
             "Write tests and validation",
             "Prepare PR with evidence and decisions",
         ]
-        return ExecutionPlan(plan_id=f"plan-{item.identifier}", summary=summary, tasks=tasks)
+        plan = ExecutionPlan(plan_id=f"plan-{item.identifier}", summary=summary, tasks=tasks)
+        log_info("orchestrator.plan", correlation_id=plan.plan_id, itemId=item.identifier, tasks=len(tasks))
+        return plan
 
     def delegate(self, plan: ExecutionPlan) -> Optional[str]:
         # Delegate basic analysis/design tasks to Data if available
@@ -28,7 +31,9 @@ class RikerOrchestrator:
         if data is not None:
             for task in plan.tasks:
                 if any(keyword in task.lower() for keyword in ["analyze", "design"]):
-                    results.append(data.perform(task))
+                    out = data.perform(task)
+                    results.append(out)
+                    log_info("delegate.data", correlation_id=plan.plan_id, task=task)
 
         return (
             ", ".join(results) if results else f"Delegated {len(plan.tasks)} tasks to specialists"
