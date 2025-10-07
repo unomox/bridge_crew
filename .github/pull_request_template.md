@@ -17,6 +17,10 @@ Closes #
 ## Security Considerations
 - Threats considered and mitigations
 
+## UX/Stakeholder Notes (Troi)
+- User story and acceptance clarity
+- UX copy or flow considerations
+
 ## Risks and Rollback
 - Risks and mitigations
 - Rollback plan

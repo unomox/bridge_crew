@@ -20,4 +20,8 @@
 ### Links
 - Related issues/PRs/ADRs
 
+### UX/Stakeholder Notes (Troi)
+- Intended users and outcomes
+- Acceptance clarity and potential ambiguities
+
 

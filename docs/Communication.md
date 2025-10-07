@@ -9,6 +9,7 @@ Use the following sections in agent updates and handoffs:
 5. Evidence (links, logs, diffs)
 6. Next Steps
 7. Risks/Blockers
+8. UX/Stakeholder Notes (Troi)
 
 ### Pull Request Description Template (GitHub)
 - Summary: what and why

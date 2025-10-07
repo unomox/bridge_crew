@@ -11,5 +11,6 @@
  - Week 3: BC-2 — Add La Forge agent and enable Docker Buildx layer caching in CI; add backlog entry.
  - Week 3: BC-3 — Add Crusher agent; enforce coverage with pytest-cov; update CI and docs; add backlog entry.
  - Week 3: BC-4 — Add Worf agent; integrate Bandit and pip-audit into CI; add backlog entry.
+ - Week 3: BC-5 — Add Troi agent; enhance PR/backlog templates; update communication protocol; add backlog entry.
 
 
