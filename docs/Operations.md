@@ -11,6 +11,7 @@
 - Metrics: plan lead time, gate pass/fail, build duration, flaky rate.
 - Traces for multi-agent task handoffs.
 - Dashboards for runs, success rates, and regressions.
+  - Implementation: `src/core/observability/logging.py` with JSON output and correlationId.
 
 ### Secrets and Access
 - Least-privilege access for each agent to repos, CI, trackers.
