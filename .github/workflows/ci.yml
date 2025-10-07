@@ -83,9 +83,13 @@ jobs:
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
-      - name: Run pytest
+      - name: Run pytest with coverage
         run: |
           docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace bridge-crew-dev bash -lc "pytest -q"
+      - name: Upload coverage summary
+        if: always()
+        run: |
+          echo "Coverage report is printed in job logs via --cov-report=term-missing."
 
   security:
     runs-on: ubuntu-latest

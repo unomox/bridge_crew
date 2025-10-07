@@ -34,6 +34,7 @@ WORKDIR /workspace
 RUN python3 -m pip install --no-cache-dir \
     ruff==0.6.4 \
     black==24.8.0 \
-    pytest==8.2.0
+    pytest==8.2.0 \
+    pytest-cov==5.0.0
 
 
